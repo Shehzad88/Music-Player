@@ -19,7 +19,7 @@ const songs = [
     {
         name: "/assets/song1.mp3",
         displayName: "Mann Mera",
-        artist: "Artist One",
+        artist: "Tenna Desai",
         image: "/assets/main3.JPG"
     },
     {
