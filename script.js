@@ -17,7 +17,7 @@ const songs = [
         image: "/assets/kk.JPG"
     },
     {
-        name: "/assets/song1.mp3",
+        name: "/assets/Song1.mp3",
         displayName: "Mann Mera",
         artist: "Tenna Desai",
         image: "/assets/main3.JPG"
