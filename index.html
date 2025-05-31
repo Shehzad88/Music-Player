@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Music Player</title>
-    <!-- Font Awesome -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -12,40 +12,79 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link href="/output.css" rel="stylesheet" />
     <style>
       input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 0px;
-        height: 0px;
+        width: 0;
+        height: 0;
         background: transparent;
-        cursor: default;
+        cursor: pointer;
       }
-
       input[type="range"]::-moz-range-thumb {
-        width: 0px;
-        height: 0px;
+        width: 0;
+        height: 0;
         background: transparent;
-        cursor: default;
+        cursor: pointer;
+      }
+      input[type="range"]::-ms-thumb {
+        width: 0;
+        height: 0;
+        background: transparent;
+        cursor: pointer;
       }
 
-      input[type="range"]::-ms-thumb {
-        width: 0px;
-        height: 0px;
+      .music-controls {
+        position: relative;
+        width: 100%;
+        height: 0.5rem; /* 8px */
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+      }
+
+      .music-controls > .bg-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #d1d5db;
+        border-radius: inherit;
+        z-index: 0;
+      }
+
+      #progress-bar-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #ec4899; /* Tailwind pink-500 */
+        border-radius: inherit;
+        transition: width 0.2s ease;
+        z-index: 10;
+      }
+
+      #progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background: transparent;
-        cursor: default;
+        cursor: pointer;
+        z-index: 20;
+        -webkit-appearance: none;
+        appearance: none;
       }
     </style>
-
-    <!-- Tailwind CSS -->
-    <link href="/output.css" rel="stylesheet" />
   </head>
 
   <body class="bg-pink-500 flex justify-center items-center h-screen">
     <div
       class="main bg-white rounded-2xl shadow-lg p-4 w-96 h-auto flex flex-col justify-between"
     >
-      <!-- Header -->
       <div class="main-icon flex justify-between items-center">
         <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
           <i class="fa-solid fa-arrow-left p-2 font-bold"></i>
@@ -55,7 +94,6 @@
         </div>
       </div>
 
-      <!-- Album Image -->
       <div
         class="img rounded-full w-48 h-48 bg-pink-400 flex justify-center items-center mx-auto"
       >
@@ -71,29 +109,17 @@
         </div>
       </div>
 
-      <!-- Song Info -->
       <div class="text flex flex-col items-center">
         <h1 class="font-bold p-3 text-2xl" id="song-name">Song Name</h1>
         <p id="Artist-name">Artist Name</p>
       </div>
 
-      <!-- Music Progress Bar -->
-      <div class="music-controls relative w-full h-2 mt-2 rounded-lg">
-        <!-- Gray Bar -->
-        <div
-          class="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-lg z-0"
-        ></div>
+      <div class="music-controls">
+        <div class="bg-bar"></div>
 
-        <!-- Pink Progress Fill -->
-        <div
-          id="progress-bar-fill"
-          class="absolute top-0 left-0 h-full bg-pink-500 z-10 transition-all duration-200 ease-linear"
-          style="width: 0%"
-        ></div>
+        <div id="progress-bar-fill" style="width: 0%"></div>
 
-        <!-- Transparent Range Input -->
         <input
-          class="w-full h-2 appearance-none bg-transparent cursor-pointer z-20 relative"
           type="range"
           id="progress-bar"
           value="0"
@@ -104,7 +130,6 @@
         <audio id="audio" src="/assets/Song1.mp3"></audio>
       </div>
 
-      <!-- Controls -->
       <div class="lower-icon flex justify-center gap-4 items-center p-4">
         <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
           <i class="fa-solid fa-backward p-2 cursor-pointer" id="backward"></i>
@@ -125,7 +150,6 @@
       </div>
     </div>
 
-    <!-- JavaScript -->
     <script src="/script.js"></script>
   </body>
 </html>
