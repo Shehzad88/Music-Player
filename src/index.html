@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0px;
+        height: 0px;
+        background: transparent;
+        cursor: default;
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 0px;
+        height: 0px;
+        background: transparent;
+        cursor: default;
+      }
+
+      input[type="range"]::-ms-thumb {
+        width: 0px;
+        height: 0px;
+        background: transparent;
+        cursor: default;
+      }
+    </style>
+
+    <!-- Tailwind CSS -->
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-pink-500 flex justify-center items-center h-screen">
+    <div
+      class="main bg-white rounded-2xl shadow-lg p-4 w-96 h-[60%] flex flex-col justify-between"
+    >
+      <!-- Header -->
+      <div class="main-icon flex justify-between items-center">
+        <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
+          <i class="fa-solid fa-arrow-left p-2 font-bold"></i>
+        </div>
+        <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
+          <i class="fa-solid fa-bars p-2 font-bold"></i>
+        </div>
+      </div>
+
+      <!-- Album Image -->
+      <div
+        class="img rounded-full w-48 h-48 bg-pink-400 flex justify-center items-center mx-auto"
+      >
+        <div
+          class="circle w-48 h-48 bg-pink-400 rounded-full flex justify-center items-center"
+        >
+          <img
+            id="image"
+            class="rounded-full w-44 h-44"
+            src="/assets/main img.jpeg"
+            alt="Album Cover"
+          />
+        </div>
+      </div>
+
+      <!-- Song Info -->
+      <div class="text flex flex-col items-center">
+        <h1 class="font-bold p-3 text-2xl" id="song-name">Song Name</h1>
+        <p id="Artist-name">Artist Name</p>
+      </div>
+
+      <!-- Music Progress Bar -->
+      <div class="music-controls relative w-full h-2 mt-2 rounded-lg">
+        <!-- Gray Bar -->
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-lg z-0"
+        ></div>
+
+        <!-- Pink Progress Fill -->
+        <div
+          id="progress-bar-fill"
+          class="absolute top-0 left-0 h-full bg-pink-500 z-10 transition-all duration-200 ease-linear"
+          style="width: 0%"
+        ></div>
+
+        <!-- Transparent Range Input -->
+        <input
+          class="w-full h-2 appearance-none bg-transparent cursor-pointer z-20 relative"
+          type="range"
+          id="progress-bar"
+          value="0"
+          step="1"
+          min="0"
+          max="100"
+        />
+        <audio id="audio" src="/assets/Song1.mp3"></audio>
+      </div>
+
+      <!-- Controls -->
+      <div class="lower-icon flex justify-center gap-4 items-center p-4">
+        <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
+          <i class="fa-solid fa-backward p-2 cursor-pointer" id="backward"></i>
+        </div>
+
+        <div
+          class="p-2 rounded-full shadow shadow-lg bg-pink-500 w-20 h-20 flex items-center justify-center shadow-gray-400"
+        >
+          <i
+            class="fa-solid fa-play p-2 cursor-pointer text-white text-2xl"
+            id="play"
+          ></i>
+        </div>
+
+        <div class="p-2 rounded-full shadow shadow-lg shadow-pink-400">
+          <i class="fa-solid fa-forward p-2 cursor-pointer" id="farward"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/src/script.js"></script>
+  </body>
+</html>
