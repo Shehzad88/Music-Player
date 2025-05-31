@@ -113,3 +113,29 @@ playButton.addEventListener("click", playSong);
 
 // Initial load
 loadSong(songs[currentSongIndex]);
+
+// Keyboard controls
+document.addEventListener("keydown", (event) => {
+  switch (event.code) {
+    case "ArrowRight":
+      // Forward 5 seconds
+      if (audio.currentTime + 5 < audio.duration) {
+        audio.currentTime += 5;
+      } else {
+        audio.currentTime = audio.duration;
+      }
+      break;
+    case "ArrowLeft":
+      // Backward 5 seconds
+      if (audio.currentTime - 5 > 0) {
+        audio.currentTime -= 5;
+      } else {
+        audio.currentTime = 0;
+      }
+      break;
+    case "Space":
+      event.preventDefault(); // Prevent scrolling
+      playSong();
+      break;
+  }
+});
